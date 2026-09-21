@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imposter</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+  <main class="app">
+    <section id="login" class="screen">
+      <div class="logo">IMPOSTER</div>
+      <p class="subtitle">One word. One imposter. Don't get caught.</p>
+      <input id="name" maxlength="20" placeholder="Enter your name" autocomplete="off">
+      <button id="join">JOIN GAME</button>
+      <p id="loginError" class="error"></p>
+    </section>
+
+    <section id="lobby" class="screen hidden">
+      <div class="topline">
+        <span>LOBBY</span>
+        <span id="playerCount">0 players</span>
+      </div>
+      <h1>Who's playing?</h1>
+      <div id="playerList" class="list"></div>
+      <button id="start">START GAME</button>
+      <p id="hostHint" class="hint"></p>
+      <p id="lobbyError" class="error"></p>
+    </section>
+
+    <section id="role" class="screen hidden">
+      <div class="roleCard">
+        <span id="roleBadge" class="badge"></span>
+        <h1 id="roleTitle"></h1>
+        <p id="roleText"></p>
+        <div id="secretWord" class="word"></div>
+      </div>
+      <button id="ready">I'M READY</button>
+    </section>
+
+    <section id="clue" class="screen hidden">
+      <div class="topline">
+        <span>CLUE ROUND</span>
+        <span id="clueCount">0/0</span>
+      </div>
+      <div id="knownWord" class="knownWord"></div>
+      <h1>Give one clue</h1>
+      <p class="subtitle">Don't make the word too obvious.</p>
+      <input id="clueInput" maxlength="80" placeholder="Your clue..." autocomplete="off">
+      <button id="sendClue">SUBMIT CLUE</button>
+      <p id="clueStatus" class="hint"></p>
+      <p id="clueError" class="error"></p>
+    </section>
+
+    <section id="vote" class="screen hidden">
+      <div class="topline">
+        <span>VOTE</span>
+        <span id="voteCount">0/0</span>
+      </div>
+      <h1>Who is the Imposter?</h1>
+      <div id="clues" class="list"></div>
+      <p class="hint">Pick one player. You cannot vote for yourself.</p>
+      <div id="voteButtons"></div>
+      <p id="voteStatus" class="hint"></p>
+    </section>
+
+    <section id="result" class="screen hidden">
+      <div class="resultIcon">🕵️</div>
+      <h1 id="resultTitle"></h1>
+      <p id="resultMessage"></p>
+      <div class="revealBox">
+        <div>IMPOSTER</div>
+        <strong id="imposterName"></strong>
+        <div class="small">SECRET WORD</div>
+        <strong id="revealedWord"></strong>
+      </div>
+
+      <div id="guessBox" class="hidden">
+        <h2>One last chance</h2>
+        <p>Guess the secret word to steal the win.</p>
+        <input id="guessInput" placeholder="Secret word..." autocomplete="off">
+        <button id="guessButton">FINAL GUESS</button>
+      </div>
+
+      <button id="nextRound">NEXT ROUND</button>
+      <p id="resultError" class="error"></p>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
